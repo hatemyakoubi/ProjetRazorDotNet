@@ -1,0 +1,40 @@
+﻿@page
+@model Projet1.Pages.StructureModel
+@{
+    ViewData["Title"] = "Structure";
+}
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Code Centre</th>
+        <th>Code Structure</th>
+        <th>Type</th>
+        <th>Libelle</th>
+        <th>Recette</th>
+        <th>Apertient Centre</th>
+    </tr>
+    @foreach (var str in Model.Structures)
+    {
+        <tr>
+            <td>@str.Id</td>
+            <td>@str.CodeCentre</td>
+            <td>@str.CodeStructure</td>
+            <td>@str.Type</td>
+            <td>@str.Lib</td>
+            <td>
+                @foreach (var recette in str.Recettes)
+                {
+                    <li>@recette.Libelle </li>
+                }
+            </td>
+            <td>
+                @foreach (var user in str.Users)
+                {
+                    <li>@user.Nom @user.Prenom </li>
+                }
+            </td>
+        </tr>
+    }
+</table>
+
